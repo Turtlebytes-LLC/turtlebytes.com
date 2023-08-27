@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Turtlebytes Suite'),
+    'name' => env('APP_NAME', 'Turtlebytes.com'),
 
     /*
     |--------------------------------------------------------------------------

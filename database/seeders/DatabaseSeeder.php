@@ -17,17 +17,15 @@ class DatabaseSeeder extends Seeder
         Bouncer::allow('superadmin')->everything();
 
         $user = User::firstOrCreate(['email' => 'admin@admin.com'], [
-            'name'     => 'Test User',
+            'name'     => 'Zach Robichaud',
             'email'    => 'admin@admin.com',
             'password' => 'admin123',
         ]);
 
         $user->assign('superadmin');
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            BlogSeeder::class,
+        ]);
     }
 }
