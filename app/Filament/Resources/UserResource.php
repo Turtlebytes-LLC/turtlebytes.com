@@ -51,6 +51,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('updated_at')->label('Last Saved')->dateTime()->searchable()->sortable(),
+
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
