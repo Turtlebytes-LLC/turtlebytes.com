@@ -3,7 +3,6 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Resources\UserResource\Pages\ProfileUser;
-use App\Filament\Resources\UserResource\Widgets\UsersWidget;
 use App\Filament\Resources\UserResource\Widgets\UserWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -31,12 +30,12 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Blue,
+                'primary'   => Color::Blue,
                 'secondary' => Color::Emerald,
-                'danger' => Color::Red,
-                'success' => Color::Green,
-                'warning' => Color::Amber,
-                'info' => Color::Gray,
+                'danger'    => Color::Red,
+                'success'   => Color::Green,
+                'warning'   => Color::Amber,
+                'info'      => Color::Gray,
             ])
             ->profile(ProfileUser::class)
             ->darkMode(false)

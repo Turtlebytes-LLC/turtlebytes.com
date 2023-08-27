@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
         Bouncer::allow('superadmin')->everything();
 
         $user = User::firstOrCreate(['email' => 'admin@admin.com'], [
-            'name' => 'Test User',
-            'email' => 'admin@admin.com',
+            'name'     => 'Test User',
+            'email'    => 'admin@admin.com',
             'password' => 'admin123',
         ]);
 
