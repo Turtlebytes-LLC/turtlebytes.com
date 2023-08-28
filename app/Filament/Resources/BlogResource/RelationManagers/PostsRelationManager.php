@@ -24,17 +24,23 @@ class PostsRelationManager extends RelationManager
                 Forms\Components\Fieldset::make('Post')->schema([
                     Forms\Components\TextInput::make('slug')
                         ->unique(Post::class, ignoreRecord: true)
+                        ->disabledOn('edit')
                         ->alphaDash()
                         ->helperText('This is automatically set based on the title'),
+                    Forms\Components\Hidden::make('author_id')
+                        ->default(auth()->id()),
                     Forms\Components\TextInput::make('title')
                         ->live(onBlur: true)
                         ->required()
                         ->autofocus()
                         ->afterStateUpdated(function (
                             Set $set,
+                            string $operation,
                             string $state
                         ) {
-                            $set('slug', Str::slug($state));
+                            if ($operation === 'create') {
+                                $set('slug', Str::slug($state));
+                            }
                         }),
                     Forms\Components\TagsInput::make('tags'),
                 ]),
@@ -49,11 +55,12 @@ class PostsRelationManager extends RelationManager
     {
         return $table
             ->recordTitleAttribute('title')
+            ->defaultSort('created_at', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('tags'),
+                Tables\Columns\TextColumn::make('slug')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
+                //                Tables\Columns\TextColumn::make('description')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('tags')->sortable()->searchable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
@@ -63,6 +70,7 @@ class PostsRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
                 Tables\Actions\DeleteAction::make(),
                 Tables\Actions\ForceDeleteAction::make(),
                 Tables\Actions\RestoreAction::make(),

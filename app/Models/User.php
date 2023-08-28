@@ -4,7 +4,9 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Traits\BaseModel;
+use Avatar;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,7 +14,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Silber\Bouncer\Database\HasRolesAndAbilities;
 
-class User extends Authenticatable implements FilamentUser
+/**
+ * @property string $avatar
+ */
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use BaseModel, HasApiTokens, HasFactory, HasRolesAndAbilities, Notifiable;
 
@@ -50,5 +55,15 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->can('panel.view');
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return route('user.avatar', $this);
+    }
+
+    protected function getAvatarAttribute(): string
+    {
+        return Avatar::create($this->name)->toBase64();
     }
 }

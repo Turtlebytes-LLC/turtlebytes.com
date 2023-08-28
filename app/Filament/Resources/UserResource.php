@@ -26,10 +26,12 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Fieldset::make('Personal Information')->schema([
-                    TextInput::make('name')->required(),
-                    TextInput::make('email')->email()->required()->unique(table: User::class, ignoreRecord: true),
-                ]),
+                Forms\Components\Fieldset::make('Personal Information')
+                    ->visibleOn(['create', 'view'])
+                    ->schema([
+                        TextInput::make('name')->required(),
+                        TextInput::make('email')->email()->required()->unique(table: User::class, ignoreRecord: true),
+                    ]),
                 Forms\Components\Fieldset::make('Roles')->schema([
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\CheckboxList::make('roles:admin')
@@ -50,6 +52,7 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('created_at')->label('Created On')->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')->label('Last Saved')->dateTime()->searchable()->sortable(),
 
             ])
@@ -58,6 +61,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

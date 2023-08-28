@@ -11,6 +11,8 @@ namespace PHPSTORM_META {
     */
     override(new \Illuminate\Contracts\Container\Container, map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -124,10 +126,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\Illuminate\Container\Container::makeWith(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -241,10 +246,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::get(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -358,10 +366,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -475,10 +486,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -592,10 +606,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\App::get(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -709,10 +726,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\App::make(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -826,10 +846,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\App::makeWith(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -943,10 +966,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\app(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -1060,10 +1086,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\resolve(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -1177,10 +1206,13 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
     override(\Psr\Container\ContainerInterface::get(0), map([
         '' => '@',
+            'BladeUI\Icons\Factory' => \BladeUI\Icons\Factory::class,
+            'BladeUI\Icons\IconsManifest' => \BladeUI\Icons\IconsManifest::class,
             'Filament\Http\Responses\Auth\Contracts\EmailVerificationResponse' => \Filament\Http\Responses\Auth\EmailVerificationResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LoginResponse' => \Filament\Http\Responses\Auth\LoginResponse::class,
             'Filament\Http\Responses\Auth\Contracts\LogoutResponse' => \Filament\Http\Responses\Auth\LogoutResponse::class,
@@ -1294,6 +1326,7 @@ namespace PHPSTORM_META {
             'migration.repository' => \Illuminate\Database\Migrations\DatabaseMigrationRepository::class,
             'queue.listener' => \Illuminate\Queue\Listener::class,
             'redis' => \Illuminate\Redis\RedisManager::class,
+            'view' => \Illuminate\View\Factory::class,
             'view.engine.resolver' => \Illuminate\View\Engines\EngineResolver::class,
         ]));
 

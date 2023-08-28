@@ -17,6 +17,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.8",
+        "laravolt/avatar": "^5.0",
         "silber/bouncer": "^1.0",
         "spatie/laravel-data": "^3.8",
         "venturecraft/revisionable": "^1.40"
@@ -44,6 +45,9 @@
         }
     },
     "scripts": {
+        "serve": [
+            "php artisan serve --host=0.0.0.0"
+        ],
         "lint": [
             "./vendor/bin/pint"
         ],

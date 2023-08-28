@@ -16,10 +16,15 @@
                 <h2 class="text-2xl font-semibold mb-4">Latest Tutorials</h2>
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <!-- Loop through latest tutorials -->
-                    @foreach ($blogs as $tutorial)
+                    @foreach ($blogs as $blog)
                         <div class="mb-4">
-                            <h3 class="text-lg font-semibold">{{ $tutorial->title }}</h3>
-                            <p class="text-gray-600">{{ $tutorial->description }}</p>
+                            <h3 class="text-lg font-semibold">
+                                <a
+                                    href="{{route('blogs.index', $blog)}}">
+                                    {{ $blog->title }}
+                                </a>
+                            </h3>
+                            <p class="text-gray-600">{{ $blog->description }}</p>
                         </div>
                     @endforeach
                 </div>

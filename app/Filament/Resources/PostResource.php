@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers\PostCommentsRelationManager;
 use App\Models\Post;
+use Carbon\Carbon;
+use Exception;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -30,6 +32,7 @@ class PostResource extends Resource
                 Forms\Components\Fieldset::make('Post')->schema([
                     Forms\Components\TextInput::make('slug')
                         ->unique(Post::class, ignoreRecord: true)
+                        ->disabledOn('edit')
                         ->alphaDash()
                         ->helperText('This is automatically set based on the title'),
                     Forms\Components\TextInput::make('title')
@@ -38,9 +41,12 @@ class PostResource extends Resource
                         ->autofocus()
                         ->afterStateUpdated(function (
                             Set $set,
+                            string $operation,
                             string $state
                         ) {
-                            $set('slug', Str::slug($state));
+                            if ($operation === 'create') {
+                                $set('slug', Str::slug($state));
+                            }
                         }),
                     Forms\Components\TagsInput::make('tags'),
                 ]),
@@ -48,9 +54,26 @@ class PostResource extends Resource
                 Forms\Components\Fieldset::make('Content')->columns(1)->schema([
                     Forms\Components\MarkdownEditor::make('body')->required(),
                 ]),
+
+                Forms\Components\Grid::make(1)->schema([
+                    Forms\Components\Repeater::make('comments')
+                        ->itemLabel(fn (array $state) => (new Carbon($state['created_at']))->format('F j, Y, g:i a'))
+                        ->relationship()
+                        ->schema([
+                            Forms\Components\TextInput::make('text'),
+
+                            Forms\Components\Group::make()->relationship('author')->schema([
+                                Forms\Components\TextInput::make('name')->label('Author'),
+                            ]),
+                        ])
+                        ->visibleOn('view'),
+                ]),
             ]);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -69,6 +92,7 @@ class PostResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -78,7 +102,7 @@ class PostResource extends Resource
                 ]),
             ])
             ->emptyStateActions([
-                Tables\Actions\CreateAction::make(),
+                //                Tables\Actions\CreateAction::make(),
             ]);
     }
 
@@ -101,7 +125,7 @@ class PostResource extends Resource
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
-            ->with('blog', 'author', 'comments')
+            ->with('blog', 'author', 'comments.author')
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
