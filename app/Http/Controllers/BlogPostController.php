@@ -11,23 +11,17 @@ class BlogPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Blog $blog)
-    {
-    }
+    public function index(Blog $blog) {}
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Blog $blog)
-    {
-    }
+    public function create(Blog $blog) {}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Blog $blog)
-    {
-    }
+    public function store(Request $request, Blog $blog) {}
 
     /**
      * Display the specified resource.
@@ -40,21 +34,15 @@ class BlogPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog, Post $post)
-    {
-    }
+    public function edit(Blog $blog, Post $post) {}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog, Post $post)
-    {
-    }
+    public function update(Request $request, Blog $blog, Post $post) {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog, Post $post)
-    {
-    }
+    public function destroy(Blog $blog, Post $post) {}
 }

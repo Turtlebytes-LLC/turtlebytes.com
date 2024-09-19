@@ -20,42 +20,35 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-    }
+    public function store(Request $request) {}
 
     /**
      * Display the specified resource.
      */
     public function show(Blog $blog)
     {
+        $blogs = Blog::with(['posts' => fn ($query) => $query->limit(10), 'author'])->get();
+
+        return view('blogs.show', compact('blog', 'blogs'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog)
-    {
-    }
+    public function edit(Blog $blog) {}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog)
-    {
-    }
+    public function update(Request $request, Blog $blog) {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog)
-    {
-    }
+    public function destroy(Blog $blog) {}
 }

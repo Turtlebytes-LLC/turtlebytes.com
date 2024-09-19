@@ -7,12 +7,14 @@
             <!-- Loop through blog posts -->
             @foreach ($blogs as $blog)
                 <div class="bg-white p-4 shadow-md rounded-md">
+                    <a href="{{route('blogs.show', $blog)}}" class="decoration-0">
                     <h3 class="text-lg font-semibold">{{ $blog->title }}</h3>
                     <p class="text-gray-600">{{ $blog->description }}</p>
                     <div class="mt-4 flex items-center">
                         <img src="{{ $blog->author->avatar }}" alt="Author Avatar" class="w-8 h-8 rounded-full mr-2">
                         <span class="text-gray-600">{{ $blog->author->name }}</span>
                     </div>
+                    </a>
 
                     <!-- Last 10 posts -->
                     <div class="mt-4">
