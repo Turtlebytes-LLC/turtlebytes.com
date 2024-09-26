@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 11.23.5.
+ * Generated for Laravel 11.25.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3952,7 +3952,7 @@ namespace Illuminate\Support\Facades {
          *
          * @template TCacheValue
          * @param string $key
-         * @param \Illuminate\Cache\array{  0: int, 1: int }  $ttl
+         * @param \Illuminate\Cache\array{  0: \DateTimeInterface|\DateInterval|int, 1: \DateTimeInterface|\DateInterval|int }  $ttl
          * @param \Illuminate\Cache\(callable():  TCacheValue)  $callback
          * @param \Illuminate\Cache\array{  seconds?: int, owner?: string }|null  $lock
          * @return \Illuminate\Cache\TCacheValue 
@@ -4302,7 +4302,7 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static array run(\Closure|array $tasks)
-     * @method static \Illuminate\Foundation\Defer\DeferredCallback defer(\Closure|array $tasks)
+     * @method static \Illuminate\Support\Defer\DeferredCallback defer(\Closure|array $tasks)
      * @see \Illuminate\Concurrency\ConcurrencyManager
      */        class Concurrency {
                     /**
@@ -4332,6 +4332,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param array $config
          * @return \Illuminate\Concurrency\ForkDriver 
+         * @throws \RuntimeException
          * @static 
          */        public static function createForkDriver($config)
         {
@@ -17395,6 +17396,17 @@ namespace Illuminate\Support\Facades {
                         $instance->addLocation($location);
         }
                     /**
+         * Prepend a location to the array of view locations.
+         *
+         * @param string $location
+         * @return void 
+         * @static 
+         */        public static function prependLocation($location)
+        {
+                        /** @var \Illuminate\View\Factory $instance */
+                        $instance->prependLocation($location);
+        }
+                    /**
          * Add a new namespace to the loader.
          *
          * @param string $namespace
@@ -18423,6 +18435,18 @@ namespace Barryvdh\Debugbar\Facades {
      * @see \Barryvdh\Debugbar\LaravelDebugbar
      */        class Debugbar {
                     /**
+         * Returns the HTTP driver
+         * 
+         * If no http driver where defined, a PhpHttpDriver is automatically created
+         *
+         * @return \DebugBar\HttpDriverInterface 
+         * @static 
+         */        public static function getHttpDriver()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getHttpDriver();
+        }
+                    /**
          * Enable the Debugbar and boot, if not already booted.
          *
          * @static 
@@ -18573,6 +18597,27 @@ namespace Barryvdh\Debugbar\Facades {
         {
                         /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
                         return $instance->injectDebugbar($response);
+        }
+                    /**
+         * Checks if there is stacked data in the session
+         *
+         * @return boolean 
+         * @static 
+         */        public static function hasStackedData()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->hasStackedData();
+        }
+                    /**
+         * Returns the data stacked in the session
+         *
+         * @param boolean $delete Whether to delete the data in the session
+         * @return array 
+         * @static 
+         */        public static function getStackedData($delete = true)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getStackedData($delete);
         }
                     /**
          * Disable the Debugbar
@@ -18740,18 +18785,6 @@ namespace Barryvdh\Debugbar\Facades {
                         return $instance->setHttpDriver($driver);
         }
                     /**
-         * Returns the HTTP driver
-         * 
-         * If no http driver where defined, a PhpHttpDriver is automatically created
-         *
-         * @return \DebugBar\HttpDriverInterface 
-         * @static 
-         */        public static function getHttpDriver()
-        {            //Method inherited from \DebugBar\DebugBar         
-                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-                        return $instance->getHttpDriver();
-        }
-                    /**
          * Returns collected data
          * 
          * Will collect the data if none have been collected yet
@@ -18796,27 +18829,6 @@ namespace Barryvdh\Debugbar\Facades {
         {            //Method inherited from \DebugBar\DebugBar         
                         /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
                         return $instance->stackData();
-        }
-                    /**
-         * Checks if there is stacked data in the session
-         *
-         * @return boolean 
-         * @static 
-         */        public static function hasStackedData()
-        {            //Method inherited from \DebugBar\DebugBar         
-                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-                        return $instance->hasStackedData();
-        }
-                    /**
-         * Returns the data stacked in the session
-         *
-         * @param boolean $delete Whether to delete the data in the session
-         * @return array 
-         * @static 
-         */        public static function getStackedData($delete = true)
-        {            //Method inherited from \DebugBar\DebugBar         
-                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
-                        return $instance->getStackedData($delete);
         }
                     /**
          * Sets the key to use in the $_SESSION array
@@ -18901,6 +18913,376 @@ namespace Barryvdh\Debugbar\Facades {
             }
     }
 
+namespace Laravolt\Avatar {
+            /**
+     * 
+     *
+     */        class Facade {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setGenerator($generator)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setGenerator($generator);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function create($name)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->create($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function applyTheme($config)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->applyTheme($config);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function addTheme($name, $config)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->addTheme($name, $config);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function toBase64()
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->toBase64();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function save($path, $quality = 90)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->save($path, $quality);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function toSvg()
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->toSvg();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function toGravatar($param = null)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->toGravatar($param);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getInitial()
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->getInitial();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getImageObject()
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->getImageObject();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function buildAvatar()
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->buildAvatar();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getAttribute($key)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->getAttribute($key);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setTheme($theme)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setTheme($theme);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setBackground($hex)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setBackground($hex);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setForeground($hex)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setForeground($hex);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setDimension($width, $height = null)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setDimension($width, $height);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setFontSize($size)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setFontSize($size);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setFontFamily($font)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setFontFamily($font);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setBorder($size, $color, $radius = 0)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setBorder($size, $color, $radius);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setBorderRadius($radius)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setBorderRadius($radius);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setShape($shape)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setShape($shape);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setChars($chars)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setChars($chars);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function setFont($font)
+        {
+                        /** @var \Laravolt\Avatar\Avatar $instance */
+                        return $instance->setFont($font);
+        }
+            }
+    }
+
+namespace Flux {
+            /**
+     * 
+     *
+     * @see \Flux\FluxManager
+     */        class Flux {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function boot()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->boot();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function ensurePro()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->ensurePro();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function pro()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->pro();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function markAssetsRendered()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->markAssetsRendered();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function styles()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->styles();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function scripts()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->scripts();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function classes($styles = null)
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->classes($styles);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function disallowWireModel($attributes, $componentName)
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->disallowWireModel($attributes, $componentName);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function splitAttributes($attributes, $by = [])
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->splitAttributes($attributes, $by);
+        }
+                    /**
+         * This is a hack to fix pass-through props with hyphenated names.
+         * 
+         * ..
+         *
+         * @static 
+         */        public static function restorePassThroughProps($attributes, $passThroughProps)
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->restorePassThroughProps($attributes, $passThroughProps);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function applyInset($inset, $top, $right, $bottom, $left)
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->applyInset($inset, $top, $right, $bottom, $left);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function bootComponents()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->bootComponents();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function bootModal()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->bootModal();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function modal($name)
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->modal($name);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function modals()
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->modals();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function toast($text, $heading = null, $duration = 5000)
+        {
+                        /** @var \Flux\FluxManager $instance */
+                        return $instance->toast($text, $heading, $duration);
+        }
+            }
+    }
+
 namespace Livewire {
             /**
      * 
@@ -18908,12 +19290,30 @@ namespace Livewire {
      * @see \Livewire\LivewireManager
      */        class Livewire {
                     /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */        public static function mount($name, $params = [], $key = null)
+        {
+                        /** @var \Livewire\Volt\LivewireManager $instance */
+                        return $instance->mount($name, $params, $key);
+        }
+                    /**
+         * {@inheritDoc}
+         *
+         * @static 
+         */        public static function update($snapshot, $diff, $calls)
+        {
+                        /** @var \Livewire\Volt\LivewireManager $instance */
+                        return $instance->update($snapshot, $diff, $calls);
+        }
+                    /**
          * 
          *
          * @static 
          */        public static function setProvider($provider)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setProvider($provider);
         }
                     /**
@@ -18921,8 +19321,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function provide($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->provide($callback);
         }
                     /**
@@ -18930,8 +19330,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function component($name, $class = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->component($name, $class);
         }
                     /**
@@ -18939,8 +19339,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function componentHook($hook)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->componentHook($hook);
         }
                     /**
@@ -18948,8 +19348,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function propertySynthesizer($synth)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->propertySynthesizer($synth);
         }
                     /**
@@ -18957,8 +19357,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function directive($name, $callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->directive($name, $callback);
         }
                     /**
@@ -18966,8 +19366,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function precompiler($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->precompiler($callback);
         }
                     /**
@@ -18975,8 +19375,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function new($name, $id = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->new($name, $id);
         }
                     /**
@@ -18984,8 +19384,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function isDiscoverable($componentNameOrClass)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->isDiscoverable($componentNameOrClass);
         }
                     /**
@@ -18993,26 +19393,17 @@ namespace Livewire {
          *
          * @static 
          */        public static function resolveMissingComponent($resolver)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->resolveMissingComponent($resolver);
         }
                     /**
          * 
          *
          * @static 
-         */        public static function mount($name, $params = [], $key = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->mount($name, $params, $key);
-        }
-                    /**
-         * 
-         *
-         * @static 
          */        public static function snapshot($component)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->snapshot($component);
         }
                     /**
@@ -19020,8 +19411,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function fromSnapshot($snapshot)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->fromSnapshot($snapshot);
         }
                     /**
@@ -19029,8 +19420,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function listen($eventName, $callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->listen($eventName, $callback);
         }
                     /**
@@ -19038,26 +19429,17 @@ namespace Livewire {
          *
          * @static 
          */        public static function current()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->current();
         }
                     /**
          * 
          *
          * @static 
-         */        public static function update($snapshot, $diff, $calls)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
-                        return $instance->update($snapshot, $diff, $calls);
-        }
-                    /**
-         * 
-         *
-         * @static 
          */        public static function updateProperty($component, $path, $value)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->updateProperty($component, $path, $value);
         }
                     /**
@@ -19065,8 +19447,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function isLivewireRequest()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->isLivewireRequest();
         }
                     /**
@@ -19074,8 +19456,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function componentHasBeenRendered()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->componentHasBeenRendered();
         }
                     /**
@@ -19083,8 +19465,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function forceAssetInjection()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->forceAssetInjection();
         }
                     /**
@@ -19092,8 +19474,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function setUpdateRoute($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setUpdateRoute($callback);
         }
                     /**
@@ -19101,8 +19483,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function getUpdateUri()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->getUpdateUri();
         }
                     /**
@@ -19110,8 +19492,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function setScriptRoute($callback)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setScriptRoute($callback);
         }
                     /**
@@ -19119,8 +19501,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function useScriptTagAttributes($attributes)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->useScriptTagAttributes($attributes);
         }
                     /**
@@ -19128,8 +19510,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function withUrlParams($params)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withUrlParams($params);
         }
                     /**
@@ -19137,8 +19519,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function withQueryParams($params)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withQueryParams($params);
         }
                     /**
@@ -19146,8 +19528,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function withCookie($name, $value)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withCookie($name, $value);
         }
                     /**
@@ -19155,8 +19537,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function withCookies($cookies)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withCookies($cookies);
         }
                     /**
@@ -19164,8 +19546,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function withHeaders($headers)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withHeaders($headers);
         }
                     /**
@@ -19173,8 +19555,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function withoutLazyLoading()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->withoutLazyLoading();
         }
                     /**
@@ -19182,8 +19564,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function test($name, $params = [])
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->test($name, $params);
         }
                     /**
@@ -19191,8 +19573,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function visit($name)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->visit($name);
         }
                     /**
@@ -19200,8 +19582,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function actingAs($user, $driver = null)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->actingAs($user, $driver);
         }
                     /**
@@ -19209,8 +19591,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function isRunningServerless()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->isRunningServerless();
         }
                     /**
@@ -19218,8 +19600,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function addPersistentMiddleware($middleware)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->addPersistentMiddleware($middleware);
         }
                     /**
@@ -19227,8 +19609,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function setPersistentMiddleware($middleware)
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->setPersistentMiddleware($middleware);
         }
                     /**
@@ -19236,8 +19618,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function getPersistentMiddleware()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->getPersistentMiddleware();
         }
                     /**
@@ -19245,8 +19627,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function flushState()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->flushState();
         }
                     /**
@@ -19254,8 +19636,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function originalUrl()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->originalUrl();
         }
                     /**
@@ -19263,8 +19645,8 @@ namespace Livewire {
          *
          * @static 
          */        public static function originalPath()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->originalPath();
         }
                     /**
@@ -19272,9 +19654,24 @@ namespace Livewire {
          *
          * @static 
          */        public static function originalMethod()
-        {
-                        /** @var \Livewire\LivewireManager $instance */
+        {            //Method inherited from \Livewire\LivewireManager         
+                        /** @var \Livewire\Volt\LivewireManager $instance */
                         return $instance->originalMethod();
+        }
+            }
+            /**
+     * 
+     *
+     */        class Component {
+                    /**
+         * 
+         *
+         * @see \Flux\FluxManager::bootModal()
+         * @param mixed $name
+         * @static 
+         */        public static function modal($name)
+        {
+                        return \Livewire\Component::modal($name);
         }
             }
     }
@@ -22990,6 +23387,209 @@ namespace Livewire\Features\SupportTesting {
             }
     }
 
+namespace App\Filament\Resources\BlogResource\Pages {
+            /**
+     * 
+     *
+     */        class CreateBlog {
+            }
+            /**
+     * 
+     *
+     */        class EditBlog {
+            }
+            /**
+     * 
+     *
+     */        class ListBlogs {
+            }
+    }
+
+namespace Filament\Resources\Pages {
+            /**
+     * 
+     *
+     * @property Form $form
+     */        class CreateRecord {
+            }
+            /**
+     * 
+     *
+     */        class Page {
+            }
+            /**
+     * 
+     *
+     * @property Form $form
+     */        class EditRecord {
+            }
+            /**
+     * 
+     *
+     */        class ListRecords {
+            }
+    }
+
+namespace Filament\Pages {
+            /**
+     * 
+     *
+     */        class Page {
+            }
+            /**
+     * 
+     *
+     */        class BasePage {
+            }
+            /**
+     * 
+     *
+     */        class Dashboard {
+            }
+            /**
+     * 
+     *
+     */        class SimplePage {
+            }
+    }
+
+namespace App\Filament\Resources\BlogResource\RelationManagers {
+            /**
+     * 
+     *
+     */        class PostsRelationManager {
+            }
+    }
+
+namespace Filament\Resources\RelationManagers {
+            /**
+     * 
+     *
+     */        class RelationManager {
+            }
+    }
+
+namespace App\Filament\Resources\PostResource\Pages {
+            /**
+     * 
+     *
+     */        class CreatePost {
+            }
+            /**
+     * 
+     *
+     */        class EditPost {
+            }
+            /**
+     * 
+     *
+     */        class ListPosts {
+            }
+    }
+
+namespace App\Filament\Resources\PostResource\RelationManagers {
+            /**
+     * 
+     *
+     */        class PostCommentsRelationManager {
+            }
+    }
+
+namespace App\Filament\Resources\UserResource\Pages {
+            /**
+     * 
+     *
+     */        class CreateUser {
+            }
+            /**
+     * 
+     *
+     */        class EditUser {
+            }
+            /**
+     * 
+     *
+     */        class ListUsers {
+            }
+            /**
+     * 
+     *
+     */        class ProfileUser {
+            }
+    }
+
+namespace Filament\Pages\Auth {
+            /**
+     * 
+     *
+     * @property Form $form
+     */        class EditProfile {
+            }
+            /**
+     * 
+     *
+     * @property Form $form
+     */        class Login {
+            }
+    }
+
+namespace App\Filament\Resources\UserResource\Widgets {
+            /**
+     * 
+     *
+     */        class UserWidget {
+            }
+    }
+
+namespace Filament\Widgets {
+            /**
+     * 
+     *
+     */        class TableWidget {
+            }
+            /**
+     * 
+     *
+     */        class Widget {
+            }
+            /**
+     * 
+     *
+     */        class AccountWidget {
+            }
+    }
+
+namespace Filament\Livewire {
+            /**
+     * 
+     *
+     */        class DatabaseNotifications {
+            }
+            /**
+     * 
+     *
+     */        class GlobalSearch {
+            }
+            /**
+     * 
+     *
+     */        class Notifications {
+            }
+    }
+
+namespace Filament\Notifications\Livewire {
+            /**
+     * 
+     *
+     */        class DatabaseNotifications {
+            }
+            /**
+     * 
+     *
+     */        class Notifications {
+            }
+    }
+
 namespace Illuminate\View {
             /**
      * 
@@ -23081,6 +23681,36 @@ namespace Illuminate\View {
          */        public static function response($callback)
         {
                         return \Illuminate\View\View::response($callback);
+        }
+            }
+    }
+
+namespace Illuminate\Testing {
+            /**
+     * 
+     *
+     * @template TResponse of \Symfony\Component\HttpFoundation\Response
+     * @mixin \Illuminate\Http\Response
+     */        class TestResponse {
+                    /**
+         * 
+         *
+         * @see \Livewire\Volt\VoltServiceProvider::registerTestingMacros()
+         * @param mixed $component
+         * @static 
+         */        public static function assertSeeVolt($component)
+        {
+                        return \Illuminate\Testing\TestResponse::assertSeeVolt($component);
+        }
+                    /**
+         * 
+         *
+         * @see \Livewire\Volt\VoltServiceProvider::registerTestingMacros()
+         * @param mixed $component
+         * @static 
+         */        public static function assertDontSeeVolt($component)
+        {
+                        return \Illuminate\Testing\TestResponse::assertDontSeeVolt($component);
         }
             }
     }
@@ -27178,6 +27808,8 @@ namespace  {
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class EloquentSerialize extends \AnourValar\EloquentSerialize\Facades\EloquentSerializeFacade {}
             class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
+            class Avatar extends \Laravolt\Avatar\Facade {}
+            class Flux extends \Flux\Flux {}
             class Livewire extends \Livewire\Livewire {}
             class Bouncer extends \Silber\Bouncer\BouncerFacade {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}

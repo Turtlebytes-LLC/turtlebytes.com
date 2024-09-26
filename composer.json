@@ -19,6 +19,11 @@
         "laravel/sanctum": "^v4.0.2",
         "laravel/telescope": "^v5.2.2",
         "laravel/tinker": "^v2.9.0",
+        "laravolt/avatar": "^6.0",
+        "livewire/flux": "^1.0",
+        "livewire/flux-pro": "^1.0",
+        "livewire/livewire": "^3.5",
+        "livewire/volt": "^1.6",
         "silber/bouncer": "^1.0",
         "spatie/laravel-data": "^4.9.0",
         "symfony/config": "^7.1",
@@ -89,5 +94,11 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
 }

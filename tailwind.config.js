@@ -7,5 +7,13 @@ export default {
         './app/Filament/**/*.php',
         './resources/views/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
+        "./vendor/livewire/flux-pro/stubs/**/*.blade.php",
+        "./vendor/livewire/flux/stubs/**/*.blade.php",
     ],
+
+    // theme: [
+    //     fontFamily: {
+    //         sans: ['Inter', 'sans-serif'],
+    //     },
+    // ],
 }
