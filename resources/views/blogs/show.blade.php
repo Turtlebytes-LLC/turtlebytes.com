@@ -3,14 +3,20 @@
 @section('content')
 
     <!-- Hero Section -->
-    <header class="bg-green-700 text-white h-64 flex items-center justify-center">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold mb-4">{{ $blog->title }}</h1>
-            @if ($blog->excerpt)
-                <p class="text-lg">{{ $blog->excerpt }}</p>
-            @endif
-        </div>
-    </header>
+    <flux:card>
+        <flux:heading size="lg">{{ $blog->title }}</flux:heading>
+        <flux:subheading class="flex gap-3">
+            <div>
+                Author:
+                {{ $blog->author->name }}
+            </div>
+            <div>
+                Published:
+                {{ $blog->created_at->diffForHumans() }}
+            </div>
+        </flux:subheading>
+        <flux:description>{{ $blog->description }}</flux:description>
+    </flux:card>
 
     <div class="content-container bg-green-50 py-8">
         <div class="container mx-auto">
