@@ -8,9 +8,9 @@ state(['tags' => []])
 ?>
 
 <div>
-    <div class="flex items-center justify-center flex-wrap">
+    <div class="flex items-center justify-center flex-wrap gap-3">
         @foreach($tags as $tag)
-            <span class="bg-green-600 text-white px-2 py-1 rounded-full text-sm mr-2">{{ $tag }}</span>
+            <span class="bg-green-600 text-white px-2 py-1 rounded-full text-sm">{{ $tag }}</span>
         @endforeach
     </div>
 </div>

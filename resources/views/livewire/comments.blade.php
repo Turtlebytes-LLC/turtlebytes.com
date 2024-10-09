@@ -71,7 +71,7 @@ $deleteComment = action(function (int $commentId) {
                 <p class="text-gray-600">{!! nl2br($comment->text) !!}</p>
                 <div class="mt-2 text-sm text-gray-500">
                     {{ $comment->created_at->diffForHumans() }}
-                    <flux:button size="sm" wire:click="deleteComment({{ $comment->id }})">
+                    <flux:button size="sm" wire:click="deleteComment({{ $comment->id }})" wire:key="comment-delete-{{ $comment->id }}">
                         Delete
                     </flux:button>
                 </div>
