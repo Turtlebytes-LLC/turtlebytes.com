@@ -1,4 +1,4 @@
-<flux:header container class="bg-green-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
+<flux:header container class="turtle-bg-green dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
     <flux:sidebar.toggle class="lg:hidden" icon="bars-2" inset="left" />
 
     <flux:brand href="/" logo="https://fluxui.dev/img/demo/logo.png" name="{{ config('app.name') }}" class="max-lg:hidden dark:hidden" />

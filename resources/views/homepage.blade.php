@@ -10,13 +10,10 @@
         </div>
     </header>
 
-
-    <flux:separator class="my-6"/>
-
-    <div class="grid grid-cols-2 gap-3">
+    <div class="grid grid-cols-2 gap-3 mt-3">
         @foreach ($blogs as $blog)
             <a
-                href="{{route('blogs.show', $blog)}}" class="bg-green-100 p-4 pop-card">
+                href="{{route('blogs.show', $blog)}}" class="turtle-bg-green p-4 pop-card">
                 <flux:heading size="lg">{{ $blog->title }}</flux:heading>
                 <flux:subheading class="flex gap-3">
                     <div>

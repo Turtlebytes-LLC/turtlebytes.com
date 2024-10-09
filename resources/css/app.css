@@ -8,6 +8,4 @@ body {
     background-image: url('../images/45-degree-fabric-light.png');
 }
 
-.pop-card {
-    @apply p-6 shadow-lg rounded-sm transition-transform transform hover:scale-105;
-}
+

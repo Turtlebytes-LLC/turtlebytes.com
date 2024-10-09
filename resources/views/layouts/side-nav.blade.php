@@ -1,4 +1,4 @@
-<flux:sidebar stashable sticky class="lg:hidden bg-green-50 dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
+<flux:sidebar stashable sticky class="lg:hidden turtle-bg-green dark:bg-zinc-900 border-r border-zinc-200 dark:border-zinc-700">
     <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
     <flux:brand href="/" logo="https://fluxui.dev/img/demo/logo.png" name="{{ config('app.name') }}" class="px-2 dark:hidden" />

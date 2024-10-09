@@ -5,3 +5,11 @@
     width: 100%;
     box-sizing: border-box;
 }
+
+.pop-card {
+    @apply shadow-md rounded-sm transition-transform transform hover:scale-95;
+}
+
+.turtle-bg-green {
+    @apply bg-green-50 text-gray-800;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use function Livewire\Volt\{state, action};
 use App\Models\Comment;
 
@@ -22,6 +23,17 @@ $saveComment = action(function () {
         // Refresh the post's comments
         $post->load('comments');
     }
+});
+
+$deleteComment = action(function (int $commentId) {
+    // Find the comment
+    $comment = Comment::find($commentId);
+
+    // Delete the comment
+    $comment->delete();
+
+    // Refresh the post's comments
+    $this->post->load('comments');
 });
 
 ?>
@@ -55,9 +67,14 @@ $saveComment = action(function () {
 
         <!-- Loop through comments -->
         @forelse($post->some_comments as $comment)
-            <div class="mx-6 bg-gray-100 p-4 shadow-md rounded-md flex justify-between align-content-start pop-card">
+            <div class="mx-6 bg-gray-100 p-4 shadow-md rounded-md lg:flex justify-between align-content-start">
                 <p class="text-gray-600">{!! nl2br($comment->text) !!}</p>
-                <div class="mt-2 text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</div>
+                <div class="mt-2 text-sm text-gray-500">
+                    {{ $comment->created_at->diffForHumans() }}
+                    <flux:button size="sm" wire:click="deleteComment({{ $comment->id }})">
+                        Delete
+                    </flux:button>
+                </div>
             </div>
         @empty
             <p>No comments yet.</p>

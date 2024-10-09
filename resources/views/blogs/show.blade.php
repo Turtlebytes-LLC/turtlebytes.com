@@ -22,7 +22,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Loop through blog posts -->
         @foreach ($blog->posts as $post)
-            <a href="{{ route('blogs.post.show', [$blog, $post]) }}" class="bg-green-50 p-4 pop-card">
+            <a href="{{ route('blogs.post.show', [$blog, $post]) }}" class="turtle-bg-green p-4 pop-card">
                 <h3 class="text-lg font-semibold">{{ $post->title }}</h3>
                 <p class="text-green-700">{{ $post->excerpt }}</p>
             </a>

@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="rounded shadow bg-green-50 space-y-6 p-6">
+    <div class="rounded shadow turtle-bg-green space-y-6 p-6">
         <flux:heading size="xl" class="text-center">{{ $post->title }}</flux:heading>
 
         @if ($post->excerpt)
