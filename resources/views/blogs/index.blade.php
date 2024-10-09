@@ -1,34 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="p-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Loop through blog posts -->
+    <div class="p-6 bg-gray-50 min-h-screen">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 space-x-4 space-y-6">
             @foreach ($blogs as $blog)
-                <div class="bg-white p-4 shadow-md rounded-md">
-                    <a href="{{route('blogs.show', $blog)}}" class="decoration-0">
-                    <h3 class="text-lg font-semibold">{{ $blog->title }}</h3>
-                    <p class="text-gray-600">{{ $blog->description }}</p>
-                    <div class="mt-4 flex items-center">
-                        <img src="{{ $blog->author->avatar }}" alt="Author Avatar" class="w-8 h-8 rounded-full mr-2">
-                        <span class="text-gray-600">{{ $blog->author->name }}</span>
-                    </div>
+                <flux:card class="bg-green-100 pop-card">
+                    <a href="{{route('blogs.show', $blog)}}" class="block decoration-0">
+                        <flux:heading level="3" class="text-xl font-bold text-gray-800 mb-2">{{ $blog->title }}</flux:heading>
+                        <flux:text class="text-gray-700 mb-4">{{ \Illuminate\Support\Str::limit($blog->description, 100) }}</flux:text>
+                        <div class="items-center mb-4 space-x-3">
+                        </div>
                     </a>
 
-                    <!-- Last 10 posts -->
-                    <div class="mt-4">
-                        <h4 class="text-md font-semibold mb-2">Recent Posts</h4>
-                        <ul class="list-inside text-gray-600 list-unstyled">
+                    <div class="border-t pt-4">
+                        <flux:heading level="4" class="text-lg font-semibold mb-3">Recent Posts</flux:heading>
+                        <div class="space-y-2">
                             @forelse($blog->posts as $recentPost)
-                                <li class="list-group-item-action bg-gray-300 hover:bg-custom-400/10 my-2 p-3">
-                                    <a href="{{ route('blogs.post.show', [$blog, $recentPost]) }}">{{ $recentPost->title }}</a>
-                                </li>
+                                <div class="bg-gray-100 hover:bg-gray-200 transition p-3 rounded-md shadow-sm">
+                                    <a href="{{route('blogs.post.show', [$blog, $recentPost])}}">
+                                        {{ $recentPost->title }}
+                                    </a>
+                                </div>
                             @empty
-                                <li>No posts yet.</li>
+                                <div>No posts yet.</div>
                             @endforelse
-                        </ul>
+                        </div>
                     </div>
-                </div>
+                </flux:card>
             @endforeach
         </div>
     </div>

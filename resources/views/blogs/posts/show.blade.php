@@ -1,3 +1,4 @@
+@php use Illuminate\Mail\Markdown; @endphp
 @extends('layouts.app')
 
 @section('content')
@@ -16,13 +17,13 @@
 
         @livewire('blog.tags', ['tags' => $post->tags])
 
-        <article class="bg-white p-6 shadow-md rounded-md">
+        <article class="p-6 shadow-md rounded-md">
             <div class="prose">
-                {!! \Illuminate\Mail\Markdown::parse($post->body) !!}
+                {!! Markdown::parse($post->body) !!}
             </div>
         </article>
 
-            <livewire:comments :post="$post"/>
+        <livewire:comments :post="$post"/>
     </div>
 
 @endsection

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply bg-gray-100 min-h-screen dark:bg-zinc-800 antialiased bg-fixed bg-top;
+
+    background-image: url('../images/45-degree-fabric-light.png');
+}
+
+.pop-card {
+    @apply p-6 shadow-lg rounded-sm transition-transform transform hover:scale-105;
+}

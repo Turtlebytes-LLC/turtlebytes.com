@@ -3,12 +3,12 @@
 use function Livewire\Volt\{state, action};
 use App\Models\Comment;
 
-state(['post', 'comment']);
+state(['post', 'newComments']);
 
 // Register the action
 $saveComment = action(function () {
     $post = $this->post;
-    $comment = $this->comment;
+    $comment = $this->newComments;
 
     if (!empty(trim($comment))) {
         // Create a new comment for the post
@@ -17,32 +17,30 @@ $saveComment = action(function () {
         ]);
 
         // Clear the comment input
-        state(['comment' => '']);
+        $this->newComments = '';
 
         // Refresh the post's comments
         $post->load('comments');
     }
 });
+
 ?>
 
 <div class="mt-8 container-fluid mx-auto">
-    <h2 class="text-2xl font-semibold mb-4">Comments</h2>
+    <h2 class="text-2xl font-semibold mb-4">
+        Comments
+        @if($post->comments->count())
+            <flux:badge variant="solid" color="sky" size="sm">{{ $post->comments->count() }}</flux:badge>
+        @endif
+    </h2>
     <div class="space-y-4">
-        <!-- Loop through comments -->
-        @forelse($post->comments as $comment)
-            <div class="bg-gray-100 p-4 shadow-md rounded-md">
-                <p class="text-gray-600">{{ $comment->text }}</p>
-                <div class="mt-2 text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</div>
-            </div>
-        @empty
-            <p>No comments yet.</p>
-        @endforelse
-
         <!-- Tailwind textarea -->
         <div class="mt-4">
             <flux:textarea
-                wire:model="comment"
+                wire:model.live="newComments"
                 placeholder="Add a comment..."
+                wire:keydown.ctrl.enter="saveComment"
+                max="100"
             />
         </div>
 
@@ -52,5 +50,17 @@ $saveComment = action(function () {
                 Submit Comment
             </flux:button>
         </div>
+
+        <flux:separator/>
+
+        <!-- Loop through comments -->
+        @forelse($post->some_comments as $comment)
+            <div class="mx-6 bg-gray-100 p-4 shadow-md rounded-md flex justify-between align-content-start pop-card">
+                <p class="text-gray-600">{!! nl2br($comment->text) !!}</p>
+                <div class="mt-2 text-sm text-gray-500">{{ $comment->created_at->diffForHumans() }}</div>
+            </div>
+        @empty
+            <p>No comments yet.</p>
+        @endforelse
     </div>
 </div>

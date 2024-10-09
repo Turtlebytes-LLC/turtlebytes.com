@@ -14,7 +14,7 @@ class FullUpgradeCommand extends Command
      * @var string
      */
     protected $signature = 'upgrade:full
-                              {--no-yarn}
+                              {--no-bun}
                               {--no-composer}
                               {--no-migrate}
                               {--no-git-pull}
@@ -46,8 +46,8 @@ class FullUpgradeCommand extends Command
             $this->runProcess(command: ['git', 'pull']);
         }
 
-        if ( ! $this->option('no-yarn')) {
-            $this->runProcess(command: ['yarn', 'upgrade', '--silent'], buffer_output: false);
+        if (!$this->option('no-bun')) {
+            $this->runProcess(command: ['bun', 'upgrade'], buffer_output: false);
         }
 
         if ( ! $this->option('no-composer')) {

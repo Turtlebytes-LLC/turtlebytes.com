@@ -25,7 +25,7 @@
     @vite('resources/sass/app.scss')
 </head>
 
-<body class="min-h-screen bg-gray-50 dark:bg-zinc-800 antialiased">
+<body>
 @include('layouts.top-nav')
 @include('layouts.side-nav')
 

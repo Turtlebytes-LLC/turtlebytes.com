@@ -13,11 +13,10 @@
 
     <flux:separator class="my-6"/>
 
-
-    <flux:card class="grid grid-cols-2 gap-3">
+    <div class="grid grid-cols-2 gap-3">
         @foreach ($blogs as $blog)
             <a
-                href="{{route('blogs.show', $blog)}}" class="bg-green-100 p-4 shadow-md rounded-md transition-all hover:bg-transparent">
+                href="{{route('blogs.show', $blog)}}" class="bg-green-100 p-4 pop-card">
                 <flux:heading size="lg">{{ $blog->title }}</flux:heading>
                 <flux:subheading class="flex gap-3">
                     <div>
@@ -32,9 +31,9 @@
                 <flux:description>{{ $blog->description }}</flux:description>
             </a>
         @endforeach
-    </flux:card>
+    </div>
 
-    <div class="flex gap-8 hidden">
+    {{--<div class="flex gap-8 hidden">
         <div class="p-4 flex-1">
             <h2 class="text-2xl font-semibold mb-4">Latest In-Depth Tutorials</h2>
             <div class="flex flex-col gap-3">
@@ -63,6 +62,6 @@
                 @endforeach
             </div>
         </div>
-    </div>
+    </div>--}}
 
 @endsection

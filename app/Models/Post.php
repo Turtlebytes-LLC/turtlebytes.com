@@ -40,7 +40,12 @@ class Post extends Model
 
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy(column: 'created_at', direction: 'desc');
+    }
+
+    public function some_comments(): HasMany
+    {
+        return $this->comments()->limit(5);
     }
 
     public function getRouteKeyName(): string
