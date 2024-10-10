@@ -10,6 +10,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Post
+ *
+ * @method static whereHasTags(mixed $request)
  */
 class Post extends Model
 {
@@ -46,6 +48,11 @@ class Post extends Model
     public function some_comments(): HasMany
     {
         return $this->comments()->limit(5);
+    }
+
+    public function scopeWhereHasTags($query, $tags)
+    {
+        return $query->whereJsonContains('tags', $tags);
     }
 
     public function getRouteKeyName(): string

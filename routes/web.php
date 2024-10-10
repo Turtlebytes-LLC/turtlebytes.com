@@ -21,4 +21,7 @@ Route::get('/', fn () => view('homepage'));
 Route::resource('blogs', BlogController::class);
 Route::resource('blogs.post', BlogPostController::class);
 
+Route::get('/posts', [BlogPostController::class, 'index'])->name('posts.tag');
+Route::get('/posts/tag/{tag}', [BlogPostController::class, 'index'])->name('posts.tag');
+
 Route::get('/user/{user}/avatar', fn (User $user) => $user->avatar)->name('user.avatar');

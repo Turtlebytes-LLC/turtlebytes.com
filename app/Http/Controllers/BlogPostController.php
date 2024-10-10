@@ -11,7 +11,14 @@ class BlogPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Blog $blog) {}
+    public function index(Blog $blog)
+    {
+        $posts = Post::query()
+                     ->when(request('tag'), fn($q) => $q->whereHasTags(request('tag')))
+                     ->paginate();
+
+        return view('blogs.posts.index', compact('posts'));
+    }
 
     /**
      * Show the form for creating a new resource.

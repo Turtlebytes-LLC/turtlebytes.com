@@ -7,7 +7,7 @@
                 <flux:card class="bg-green-100 pop-card">
                     <a href="{{route('blogs.show', $blog)}}" class="block decoration-0">
                         <flux:heading level="3" class="text-xl font-bold text-gray-800 mb-2">{{ $blog->title }}</flux:heading>
-                        <flux:text class="text-gray-700 mb-4">{{ \Illuminate\Support\Str::limit($blog->description, 100) }}</flux:text>
+                        <flux:text class="text-gray-700 mb-4">{{ \Illuminate\Support\Str::limit($blog->description) }}</flux:text>
                         <div class="items-center mb-4 space-x-3">
                         </div>
                     </a>
