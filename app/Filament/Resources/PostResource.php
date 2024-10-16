@@ -43,7 +43,7 @@ class PostResource extends Resource
                             Set $set,
                             string $operation,
                             string $state
-                        ) {
+                        ): void {
                             if ($operation === 'create') {
                                 $set('slug', Str::slug($state));
                             }

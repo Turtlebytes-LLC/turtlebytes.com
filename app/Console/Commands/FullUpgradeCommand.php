@@ -31,7 +31,7 @@ class FullUpgradeCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $check = $this->is_connected();
 
@@ -83,7 +83,7 @@ class FullUpgradeCommand extends Command
      *
      * @return void
      */
-    protected function runProcess(array $command, int $timeout = 300, bool $buffer_output = true)
+    protected function runProcess(array $command, int $timeout = 300, bool $buffer_output = true): void
     {
         $process_name = implode(' ', $command);
 
@@ -92,7 +92,7 @@ class FullUpgradeCommand extends Command
         $process = new Process($command);
         $process->setTimeout($timeout); // 300 seconds = 5 minutes
 
-        $process->run(function ($type, $buffer) use ($buffer_output) {
+        $process->run(function ($type, $buffer) use ($buffer_output): void {
             if ($buffer_output) {
                 $this->output->write($buffer);
             }

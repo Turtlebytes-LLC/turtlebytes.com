@@ -9,9 +9,9 @@ class CreateRevisionsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('revisions', function ($table) {
+        Schema::create('revisions', function ($table): void {
             $table->bigIncrements('id');
             $table->string('revisionable_type');
             $table->unsignedBigInteger('revisionable_id');
@@ -30,7 +30,7 @@ class CreateRevisionsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('revisions');
     }

@@ -20,12 +20,12 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create() {}
+    public function create(): void {}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(Request $request): void {}
 
     /**
      * Display the specified resource.
@@ -40,15 +40,15 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog) {}
+    public function edit(Blog $blog): void {}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog) {}
+    public function update(Request $request, Blog $blog): void {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog) {}
+    public function destroy(Blog $blog): void {}
 }

@@ -14,8 +14,8 @@ class BlogPostController extends Controller
     public function index(Blog $blog)
     {
         $posts = Post::query()
-                     ->when(request('tag'), fn($q) => $q->whereHasTags(request('tag')))
-                     ->paginate();
+            ->when(request('tag'), fn($q) => $q->whereHasTags(request('tag')))
+            ->paginate();
 
         return view('blogs.posts.index', compact('posts'));
     }
@@ -23,12 +23,12 @@ class BlogPostController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Blog $blog) {}
+    public function create(Blog $blog): void {}
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Blog $blog) {}
+    public function store(Request $request, Blog $blog): void {}
 
     /**
      * Display the specified resource.
@@ -41,15 +41,15 @@ class BlogPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Blog $blog, Post $post) {}
+    public function edit(Blog $blog, Post $post): void {}
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Blog $blog, Post $post) {}
+    public function update(Request $request, Blog $blog, Post $post): void {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Blog $blog, Post $post) {}
+    public function destroy(Blog $blog, Post $post): void {}
 }

@@ -24,12 +24,12 @@ class BouncerSeederCommand extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         collect(scandir(app_path('Models')))
             ->filter(fn ($file) => ! in_array($file, ['.', '..']))
             ->map(fn ($file) => str_replace('.php', '', $file))
-            ->each(function ($model) {
+            ->each(function ($model): void {
                 $abilities = [
                     'create',
                     'view',

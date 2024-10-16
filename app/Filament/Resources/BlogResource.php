@@ -55,7 +55,7 @@ class BlogResource extends Resource
                         ->afterStateUpdated(function (
                             Set $set,
                             string $state
-                        ) {
+                        ): void {
                             $set('slug', Str::slug($state));
                         }),
                     TextInput::make('description'),

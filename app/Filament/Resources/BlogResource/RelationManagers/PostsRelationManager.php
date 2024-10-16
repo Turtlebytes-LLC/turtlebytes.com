@@ -37,7 +37,7 @@ class PostsRelationManager extends RelationManager
                             Set $set,
                             string $operation,
                             string $state
-                        ) {
+                        ): void {
                             if ($operation === 'create') {
                                 $set('slug', Str::slug($state));
                             }

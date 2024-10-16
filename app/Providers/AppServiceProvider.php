@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('homepage', function ($view) {
+        View::composer('homepage', function ($view): void {
             $view->with('blogs', Blog::with('posts')->get());
         });
     }
